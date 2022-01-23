@@ -1,0 +1,37 @@
+.img1{
+    margin-top: 130px;
+}
+.home_head{
+    text-align: left;
+    margin-left: 290px;
+}
+.card{
+    width: 20rem;
+    border: 1px solid #ADACAC;
+    background-color: #F9EBEB;
+    margin-left: 30px;
+    padding: 10px;
+}
+.card-group{
+    display: flex;
+    margin-left: 250px;
+}
+.card-link{
+    margin-left: 150px;
+    display: contents;
+}
+.card-body{
+    text-align: left;
+}
+.card-header{
+    text-align: right;
+}
+hr{
+    color: #ADACAC !important;
+}
+.card-title{
+    font-weight: bold;
+}
+.card-text{
+    font-size: 16px;
+}
