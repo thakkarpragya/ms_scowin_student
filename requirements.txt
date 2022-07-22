@@ -1,5 +1,6 @@
-Django==4.0.2
-django-cors-headers==3.11.0
-djangorestframework==3.13.1
-pika==1.2.1
-amqp==5.1.1
+Django
+django-cors-headers
+djangorestframework
+setuptools==44.1.1
+pika
+amqp
