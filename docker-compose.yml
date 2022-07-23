@@ -13,8 +13,8 @@ services:
     restart: on-failure:10
     depends_on:
       - rabbit_mq
-    # volumes:
-    #   - ../ms_scowin_vac_drive/:/usr/src/app/
+    volumes:
+      - ../ms_scowin_vac_drive/:/usr/src/app/
     ports:
       - 8085:8085
 
