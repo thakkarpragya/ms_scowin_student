@@ -4,7 +4,7 @@ import pika
 # import os
 
 def publish(method, body):
-    amqp_url = 'amqp://rabbit_mq?connection_attempts=10&retry_delay=10'
+    amqp_url = 'amqp://rabbit-mq?connection_attempts=10&retry_delay=10'
     url_params = pika.URLParameters(amqp_url)
     connection = pika.BlockingConnection(url_params)
     channel = connection.channel()
