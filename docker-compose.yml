@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  rabbit_mq:
+    image: rabbitmq:3.8-rc-management
+    container_name: rabbit_mq
+    ports:
+        - '5672:5672'
+        - '15672:15672'
+    volumes:
+      - rabbit_mqdata:/usr/share/rabbitmq/data
+  consumer:
+    # image: salazarslytherin/vaccine-ms:2.1
+    build: ../ms_scowin_vac_drive/.
+    # environment:
+    #   AMQP_URL: 'amqp://rabbit_mq?connection_attempts=10&retry_delay=10'
+    restart: on-failure:10
+    depends_on:
+      - rabbit_mq
+    volumes:
+      - ../ms_scowin_vac_drive/:/usr/src/app/
+    ports:
+      - 8085:8085
+
+  publisher:
+    # image: salazarslytherin/student-ms:3.0
+    build: .
+    volumes:
+      - ./:/usr/src/app/
+    ports:
+      - 8084:8084
+    restart: on-failure:10
+    depends_on:
+      - rabbit_mq
+    # environment:
+    #   AMQP_URL: 'amqp://rabbit_mq?connection_attempts=10&retry_delay=10'
+volumes:
+    rabbit_mqdata:
+      driver: local

@@ -22,6 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('student.urls')),
     # path('', include('health_checks.urls')),
-    path('health', include('health_check.urls'))
+    # path('health', include('health_check.urls'))
 ]
 

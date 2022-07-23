@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders', 
     'student',
-    'health_check',
-    'health_check.contrib.rabbitmq'
+    # 'health_check',
+    # 'health_check.contrib.rabbitmq'
 ]
 
 MIDDLEWARE = [
