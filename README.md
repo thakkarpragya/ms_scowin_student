@@ -38,11 +38,35 @@ Verify the deployment by navigating to your server address in your preferred bro
 
 ## Run as docker container
 
+#### Steps to reproduce:
+
+Build the Dockerfile
+
+```
+DOCKER_BUILDKIT=0 docker build . -t <image-name> --no-cache
+```
+
+Run rabbitmq and image (in the same order)
+```
+docker run -d --hostname rabbit_mq --name rabbit_mq -p 15672:15672 -p  5672:5672 rabbitmq:3.8-rc-management
+docker run -d -p 8084:8084 <image-name>
+```
+
+Verify the deployment by navigating to your server address in your preferred browser.
+
+```sh
+127.0.0.1:8084
+```
+
+## Run application E2E
+
 #### Pre-requisites:
 > Verify that no container named `rabbit_mq` is running in your system.
 > If producer and consumer microservices are cloned to local, make sure all the repositories are in same location for volume mount.
 > Else, comment out volume mount configuration in docker-compose.yml.
 > Please note that if volume mount configuration(s) is/are commented out, data that are published in queue and consumed from the queue will be lost once the `docker-compose` is stopped.
+
+#### Steps to reproduce:
 
 Start docker compose
 ```
