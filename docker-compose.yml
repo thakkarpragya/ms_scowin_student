@@ -9,21 +9,17 @@ services:
     volumes:
       - rabbit_mqdata:/usr/share/rabbitmq/data
   consumer:
-    # image: salazarslytherin/vaccine-ms:2.1
-    build: ../ms_scowin_vac_drive/.
-    # environment:
-    #   AMQP_URL: 'amqp://rabbit_mq?connection_attempts=10&retry_delay=10'
+    image: salazarslytherin/vaccine-ms:4.5
     restart: on-failure:10
     depends_on:
       - rabbit_mq
-    volumes:
-      - ../ms_scowin_vac_drive/:/usr/src/app/
+    # volumes:
+    #   - ../ms_scowin_vac_drive/:/usr/src/app/
     ports:
       - 8085:8085
 
   publisher:
-    # image: salazarslytherin/student-ms:3.0
-    build: .
+    image: salazarslytherin/student-ms:4.5
     volumes:
       - ./:/usr/src/app/
     ports:
@@ -31,8 +27,6 @@ services:
     restart: on-failure:10
     depends_on:
       - rabbit_mq
-    # environment:
-    #   AMQP_URL: 'amqp://rabbit_mq?connection_attempts=10&retry_delay=10'
 volumes:
     rabbit_mqdata:
       driver: local
