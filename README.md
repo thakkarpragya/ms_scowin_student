@@ -62,4 +62,4 @@ Publisher (Student Microservice) - http://127.0.0.1:8084
 Consumer (Vaccination Microservice)- http://127.0.0.1:8085
 ```
 
-Verify that the communication between publisher and rabbitmq happens by triggering a POST API call to /students.
+Verify that the communication between rabbitmq, publisher and consumer(s) happen by triggering a POST API call to /students (with id <id>) in publisher and a GET API call to /students/<id> in consumer.
