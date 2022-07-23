@@ -61,10 +61,10 @@ Verify the deployment by navigating to your server address in your preferred bro
 ## Run application E2E
 
 #### Pre-requisites:
-> Verify that no container named `rabbit_mq` is running in your system.
-> If producer and consumer microservices are cloned to local, make sure all the repositories are in same location for volume mount.
-> Else, comment out volume mount configuration in docker-compose.yml.
-> Please note that if volume mount configuration(s) is/are commented out, data that are published in queue and consumed from the queue will be lost once the `docker-compose` is stopped.
+> - Verify that no container named `rabbit_mq` is running in your system.
+> - If producer and consumer microservices are cloned to local, make sure all the repositories are in same location for volume mount.
+> - Else, comment out volume mount configuration in docker-compose.yml.
+> - Please note that if volume mount configuration(s) is/are commented out, data that are published in queue and consumed from the queue will be lost once the `docker-compose` is stopped.
 
 #### Steps to reproduce:
 
