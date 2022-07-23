@@ -50,7 +50,7 @@ docker-compose up --remove-orphans
 ```
 
 Verify that the containers are running in your system.
-<!-- Below command should run rabbitmq and publisher containers -->
+<!-- Below command should show rabbitmq, publisher and consumer containers in running state -->
 ```
 docker ps 
 ```
