@@ -19,7 +19,7 @@ services:
     volumes:
       - ../ms_scowin_vac_drive/:/usr/src/app/
     ports:
-      - 6002:8085
+      - 8085:8085
 
   publisher:
     # image: salazarslytherin/student-ms:3.0
@@ -27,7 +27,7 @@ services:
     volumes:
       - ./:/usr/src/app/
     ports:
-      - 6065:8084
+      - 8084:8084
     restart: on-failure:10
     depends_on:
       - rabbit_mq
