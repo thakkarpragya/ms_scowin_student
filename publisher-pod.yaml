@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.1 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: publisher
+  name: publisher
+spec:
+  containers:
+    - image: salazarslytherin/student-ms:6.0
+      name: publisher
+      ports:
+        - containerPort: 8084
+      resources: {}
+  restartPolicy: OnFailure
+status: {}

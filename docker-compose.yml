@@ -1,32 +1,36 @@
 version: '3.8'
 services:
-  rabbit_mq:
+  rabbit-mq:
     image: rabbitmq:3.8-rc-management
-    container_name: rabbit_mq
+    container_name: rabbit-mq
     ports:
         - '5672:5672'
         - '15672:15672'
     volumes:
       - rabbit_mqdata:/usr/share/rabbitmq/data
   consumer:
-    image: salazarslytherin/vaccine-ms:4.5
-    restart: on-failure:10
+    # image: salazarslytherin/vaccine-ms:4.5
+    # build: ../ms_scowin_vac_drive/.
+    image: salazarslytherin/vaccine-ms:6.0
+    restart: on-failure
     depends_on:
-      - rabbit_mq
-    volumes:
-      - ../ms_scowin_vac_drive/:/usr/src/app/
+      - rabbit-mq
+    # volumes:
+    #   - ../ms_scowin_vac_drive/:/usr/src/app/
     ports:
       - 8085:8085
 
   publisher:
-    image: salazarslytherin/student-ms:4.5
-    volumes:
-      - ./:/usr/src/app/
+    # image: salazarslytherin/student-ms:4.5
+    image: salazarslytherin/student-ms:6.0
+    # build: .
+    # volumes:
+    #   - ./:/usr/src/app/
     ports:
       - 8084:8084
-    restart: on-failure:10
+    restart: on-failure
     depends_on:
-      - rabbit_mq
+      - rabbit-mq
 volumes:
     rabbit_mqdata:
       driver: local

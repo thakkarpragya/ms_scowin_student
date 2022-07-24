@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.1 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: rabbit-mq
+  name: rabbit-mq
+spec:
+  ports:
+    - name: "5672"
+      port: 5672
+      targetPort: 5672
+    - name: "15672"
+      port: 15672
+      targetPort: 15672
+      nodePort: 30001
+  selector:
+    io.kompose.service: rabbit-mq
+  type: LoadBalancer
+status:
+  loadBalancer: {}
