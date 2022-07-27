@@ -4,7 +4,7 @@
 
 > `Rabbitmq` service should be up and running.
 
-#### Steps to reproduce:
+#### Steps to run:
 
 Clone the repository and install the required packages using below commands
 ```sh
@@ -38,7 +38,7 @@ Verify the deployment by navigating to your server address in your preferred bro
 
 ## Run as docker container
 
-#### Steps to reproduce:
+#### Steps to run:
 
 Build the Dockerfile
 
@@ -58,7 +58,7 @@ Verify the deployment by navigating to your server address in your preferred bro
 127.0.0.1:8084
 ```
 
-## Run application E2E
+## Run application E2E using Docker
 
 #### Pre-requisites:
 > - Verify that no container named `rabbit_mq` is running in your system.
@@ -87,3 +87,29 @@ Consumer (Vaccination Microservice)- http://127.0.0.1:8085
 ```
 
 Verify that the communication between rabbitmq, publisher and consumer(s) happen by triggering a POST API call to /students (with id \<id\>) in publisher and a GET API call to /students/\<id\> in consumer.
+
+
+## Run application E2E using Kubernetes
+
+#### Pre-requisites:
+> minikube is installed and started in system using `minikube start` command.
+> kompose is installed in the system.
+
+#### Steps to run:
+
+Convert config from docker compose to kubernetes.
+```sh
+kompose convert
+Note: If you have the list of config files to be deployed in kubernetes, this step can be skipped.
+```
+
+A list of files containing service and pod configurations will be generated. Deploy in kubernetes using `kubectl` command.
+```sh
+kubectl apply -f file1,file2,...,fileN
+Note: file1,fil2,...,fileN should not contain spaces in-between.
+```
+
+View the status of pods and services in minikube dashboard.
+```sh
+minikube dashboard
+```
