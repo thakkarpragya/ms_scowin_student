@@ -15,11 +15,7 @@ class Students(ListCreateAPIView):
 
     #def create(self, request, *args, **kwargs):
     def create(self, request):
-        # serializer = self.get_serializer(data=request.data)
-        # serializer.is_valid(raise_exception=True)
-        # serializer.save()
-        # publish('student_created', serializer.data)
-        # return Response(serializer.data)
+
         
         serializer = self.get_serializer(data=request.data, many=isinstance(request.data, list))
         serializer.is_valid(raise_exception=True)
@@ -27,7 +23,8 @@ class Students(ListCreateAPIView):
         # results = Student.objects.all()
         # output_serializer = StudentSerializer(results, many=True)
         # data = output_serializer.data[:]
-        publish('student_created', serializer.data)
+        publish('student_created', serializer.data,'vacdrive')
+        publish('student_created', serializer.data,'studentcomorb')
         return Response(serializer.data)     
     
 class StudentsDetails(RetrieveUpdateDestroyAPIView):
@@ -39,24 +36,11 @@ class StudentsDetails(RetrieveUpdateDestroyAPIView):
         serializer = StudentSerializer(instance=product, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        publish('student_updated', serializer.data)
+        publish('student_updated', serializer.data,'vacdrive')
+        publish('student_updated', serializer.data,'studentcomorb')
         return Response(serializer.data)    
     
 class StudentsMetadata(ListAPIView):
    def list(self, request, *args, **kwargs):
        studentCount = Student.objects.all().count()      
        return Response(studentCount)       
-
-# class StudentsVaccinationMetadata(ListAPIView):
-#     def list(self, request, *args, **kwargs):
-#         studentCount = Student.objects.all().count()
-#         vaccinatedStudentCount = Student.objects.all().count()
-#         upcomingVaccinationDrive = Student.objects.filter(gender='Upcoming').values()
-
-#         out = {
-#             'registeredStudentCount': studentCount,
-#             'vaccinatedStudentCount': vaccinatedStudentCount,
-#             'upcomingVaccinationDrive': upcomingVaccinationDrive,
-#         }
-#         return Response(out)    
-            
