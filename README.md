@@ -66,7 +66,7 @@ Verify the deployment by navigating to your server address in your preferred bro
 > - Else, comment out volume mount configuration in docker-compose.yml.
 > - Please note that if volume mount configuration(s) is/are commented out, data that are published in queue and consumed from the queue will be lost once the `docker-compose` is stopped.
 
-#### Steps to reproduce:
+#### Steps to run:
 
 Start docker compose
 ```
