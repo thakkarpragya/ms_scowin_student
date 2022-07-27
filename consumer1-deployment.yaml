@@ -6,13 +6,13 @@ metadata:
     kompose.version: 1.26.1 (HEAD)
   creationTimestamp: null
   labels:
-    io.kompose.service: publisher
-  name: publisher
+    io.kompose.service: consumer1
+  name: consumer1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: publisher
+      io.kompose.service: consumer1
   strategy:
     type: Recreate
   template:
@@ -22,13 +22,13 @@ spec:
         kompose.version: 1.26.1 (HEAD)
       creationTimestamp: null
       labels:
-        io.kompose.service: publisher
+        io.kompose.service: consumer1
     spec:
       containers:
-        - image: salazarslytherin/student-ms:6.1
-          name: publisher
+        - image: salazarslytherin/comorb-ms:1.1
+          name: consumer1
           ports:
-            - containerPort: 8084
+            - containerPort: 8086
           resources: {}
       restartPolicy: Always
 status: {}
